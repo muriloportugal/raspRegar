@@ -7,14 +7,14 @@ const led = new Gpio(17,{ mode: Gpio.OUTPUT });
 const app = Fastify({logger:false});
 app.register(cors);
 
-app.get('/liga',async(request,reply)=>{
+app.get('/ligar',async(request,reply)=>{
   led.digitalWrite(1);
+  //Após 5 segundos desliga
+  setTimeout(() => {
+    led.digitalWrite(0);
+  }, 5000);
+  
   return {message:'ligado'}
-});
-
-app.get('/desligado',async(request,reply)=>{
-  led.digitalWrite(0);
-  return {message:'desligado'}
 });
 
 app.listen({
