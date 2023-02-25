@@ -9,11 +9,11 @@ app.register(cors);
 
 app.get('/ligar',async(request,reply)=>{
   led.digitalWrite(1);
-  //Após 5 segundos desliga
+  //Após 3 segundos desliga
   setTimeout(() => {
     led.digitalWrite(0);
-  }, 5000);
-  
+  }, 3000);
+
   return {message:'ligado'}
 });
 
