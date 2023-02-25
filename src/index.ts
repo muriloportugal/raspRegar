@@ -4,7 +4,7 @@ import {Gpio} from 'pigpio';
 
 const led = new Gpio(17,{ mode: Gpio.OUTPUT });
 
-const app = Fastify({logger:true});
+const app = Fastify({logger:false});
 app.register(cors);
 
 app.get('/liga',async(request,reply)=>{
@@ -13,7 +13,7 @@ app.get('/liga',async(request,reply)=>{
 });
 
 app.get('/desligado',async(request,reply)=>{
-  led.digitalWrite(1);
+  led.digitalWrite(0);
   return {message:'desligado'}
 });
 
